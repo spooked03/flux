@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf2-rs
+  namespace: azure-arc-release
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tf2-rs
+  template:
+    metadata:
+      labels:
+        app: tf2-rs
+    spec:
+      containers:
+        - name: tf2-rs
+          image: ghcr.io/spooked03/tf2-rs:latest
+          ports:
+            - containerPort: 80
